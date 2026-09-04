@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "OGameX Auto Expedition",
+  "version": "1.2.3",
+  "description": "OGameX keşif filolarını izler ve dönen filoları kayıtlı preset ile yeniden gönderir.",
+  "permissions": ["storage", "activeTab", "power", "alarms", "notifications", "clipboardWrite"],
+  "background": { "service_worker": "background.js" },
+  "host_permissions": ["*://ogamex.net/*", "*://*.ogamex.net/*"],
+  "action": {
+    "default_title": "OGameX Auto Expedition",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://ogamex.net/*", "*://*.ogamex.net/*"],
+      "js": ["sidebar-start.js"],
+      "css": ["sidebar-start.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["*://ogamex.net/*", "*://*.ogamex.net/*"],
+      "js": ["core.js", "share-core.js", "content.js", "atlas-core.js", "stats-core.js", "intel-core.js", "stats.js", "atlas.js", "intelligence.js", "scanner.js", "dashboard.js", "resource-panel-core.js", "resource-panel.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

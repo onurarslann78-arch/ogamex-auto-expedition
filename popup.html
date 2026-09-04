@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OGameX Auto Expedition</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Auto Expedition <small>v1.2.3</small></h1>
+    <div id="status">Sayfa okunuyor…</div>
+  </header>
+  <form id="settings">
+    <p>Oyuncu kartı: Galaksi'de adın üzerine gel. Kaynak tablosu: oyun sayfasının sol altındaki Gezegen defteri düğmesi.</p>
+    <p>Hedef oyuncu: karttan sabitle veya Gezegen defteri içindeki Hedef oyuncu alanından ara. Koordinat düğmeleri ilgili Galaksi sistemini açar.</p>
+    <p>Hedef istatistikleri: İstatistikler sayfasında ziyaret ettiğin kategorilerdeki oyuncu değerleri, sıralama ve tarih ile kaydedilir. Filo istatistiği gemi adedi anlamına gelmez.</p>
+    <p>Otomatik tarama: oyun sayfasının sol altındaki Otomatik tarama düğmesi. Galaksi 1'den son galaksiye, her birinde sistem 1'den son sisteme tarama veya kendi gezegenlerinin kaynak turu.</p>
+    <label class="switch"><input id="enabled" type="checkbox"><span>Otomasyonu aç</span></label>
+    <div class="grid">
+      <label>En fazla keşif<input id="expeditionCount" value="5"></label>
+      <label>Süre (değer)<input id="expeditionDuration" value="60"></label>
+      <label>Hız (%)<input id="expeditionFleetSpeed" value="100"></label>
+      <label>Filo grubu<input id="fleetGroup" placeholder="Boş = değiştirme"></label>
+    </div>
+    <h2>Gemi dağılımı</h2>
+    <p>Her gönderimde oyunun <strong>Tümünü seç</strong> düğmesi kullanılır; gemileri OGameX otomatik bölüştürür.</p>
+    <h2>Bekleme ve retry</h2>
+    <div class="grid">
+      <label>En az (sn)<input id="delayMin" type="number" min="0"></label>
+      <label>En çok (sn)<input id="delayMax" type="number" min="0"></label>
+      <label>Retry limiti<input id="maxRetries" type="number" min="1" max="10"></label>
+    </div>
+    <label class="switch"><input id="showPanel" type="checkbox"><span>Sayfa içi paneli göster</span></label>
+    <label class="switch"><input id="keepAwake" type="checkbox" checked><span>Çalışırken sistem uykusunu engelle</span></label>
+    <label class="switch"><input id="autoRecovery" type="checkbox" checked><span>Kontrollü yenileme ve arka plan canlılık kontrolü</span></label>
+    <label class="switch"><input id="notifications" type="checkbox" checked><span>Başarı, hata ve hedef değişikliği bildirimleri</span></label>
+    <p>Ekran kapanabilir. Tarayıcı açık kalmalı. Toparlanma yalnızca otomasyona bağlı Çoklu Keşif sekmesini yeniler.</p>
+    <button type="submit">Kaydet ve uygula</button>
+    <p id="message"></p>
+  </form>
+  <section><h2>Son loglar</h2><pre id="logs">Henüz log yok.</pre></section>
+  <section>
+    <button id="export" type="button">Kalıcı logları indir (son 500 kayıt)</button>
+    <button id="stop" type="button">Tüm otomasyonu durdur</button>
+    <button id="ack" type="button">Filo durumunu kontrol ettim — kilidi kaldır</button>
+    <p>Belirsiz gönderimde önce filo hareketlerini kontrol edin. Kilit kaldırma yeni gönderime izin verir.</p>
+  </section>
+  <section id="share-helper">
+    <h2>Manuel paylaşım yardımcısı</h2>
+    <p>Yalnızca panoya kopyalar ve mesaj sayfasını açar; alıcı seçmez veya mesaj göndermez.</p>
+    <label>Herkese açık indirme bağlantısı<input id="shareUrl" type="url" placeholder="https://…"></label>
+    <label>Mesaj<textarea id="shareText" rows="4">OGameX Auto Expedition v1.2.3 paketini paylaşmak istiyorum:</textarea></label>
+    <button id="share" type="button">Mesajı kopyala ve sohbeti aç</button>
+    <p id="shareMessage"></p>
+  </section>
+  <script src="share-core.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

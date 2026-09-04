@@ -1,0 +1,3 @@
+#planet-selection,#other-planets{overflow-anchor:none!important}
+html[data-ogx-sidebar-pending] #planet-selection{visibility:hidden!important}
+#other-planets[data-ogx-hidden]{display:none!important}
